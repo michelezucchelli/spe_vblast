@@ -1,0 +1,16 @@
+# Number of tx and rx antennas
+num_Tx: 4
+num_Rx: 4
+
+# Modulation order
+M: 16
+        
+# Number of symbols
+num_symb: 50000
+
+# Points to plot
+points: 20
+
+# Eb/N0
+ebn0_min: 8
+ebn0_max: 18

@@ -1,4 +1,4 @@
-function [ber_zf, ber_vblast] = com_sys(numTx, numRx, num_symbols, modOrder, eb_n0)
+function [ber_zf, ber_vblast, ber_mmse] = com_sys(numTx, numRx, num_symbols, modOrder, eb_n0)
 
 % generate random symbols
 symbols = randi([0 modOrder-1], 1, num_symbols);
@@ -42,6 +42,7 @@ H=reshape(h,numTx,numRx,num_symbols/numRx);
 % define BER null vector for V-BLAST and ZF
 ber_vblast = zeros(1,lenEbN0);
 ber_zf = zeros(1,lenEbN0);
+ber_mmse = zeros(1,lenEbN0);
 
 %% Receiver
     for k=1:lenEbN0 % loop through each Eb/N0 value
@@ -70,7 +71,7 @@ ber_zf = zeros(1,lenEbN0);
         % -------------------------------------------------- %
                 
         % ----------------------- ZF ----------------------- %
-        % Compute received signal matrix using zero_forcing_equalization function
+        % Compute received signal matrix using zero_forcing function
         rcvd_zf = zero_forcing(num_symbols, numRx, H, ynoisy);
         % Demodulate the received signal
         y_final_zf = qamdemod(reshape(rcvd_zf, 1, num_symbols), modOrder);
@@ -79,5 +80,19 @@ ber_zf = zeros(1,lenEbN0);
         % Convert to bit error rate
         ber_zf(k) = tmp_ser_zf / log2(modOrder);
         % -------------------------------------------------- %
+
+        % ---------------------- MMSE ---------------------- %
+        % rcvd_mmse = mmse(num_symbols, numRx, H, ynoisy);
+        % % Demodulate the received signal
+        % y_final_mmse = qamdemod(reshape(rcvd_mmse, 1, num_symbols), modOrder);
+        % % Calculate the symbol error rate
+        % [~, tmp_ser_mmse] = symerr(symbols, y_final_mmse);        
+        % % Convert to bit error rate
+        % ber_mmse(k) = tmp_ser_mmse / log2(modOrder);
+
+        % -------------------------------------------------- %
     end
+    ber_mmse
+    ber_zf
+    ber_vblast
 end
