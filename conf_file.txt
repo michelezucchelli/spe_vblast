@@ -2,14 +2,14 @@
 type: zf
 
 # Number of tx and rx antennas
-num_Tx: 4
-num_Rx: 4
+num_Tx: 2
+num_Rx: 2
 
 # Modulation order
 M: 16
         
 # Number of symbols
-num_symb: 20000
+num_symb: 15000
 
 # Points to plot
 points: 10

@@ -2,13 +2,6 @@
 %
 % load_config  Loads a simple configuration file into a dictionary.
 %
-%   config = load_config(file_path)
-%
-% Copyright © 2023 Tamas Kis
-% Last Update: 2023-09-18
-% Website: https://tamaskis.github.io
-% Contact: tamas.a.kis@outlook.com
-%   
 %--------------------------------------------------------------------------
 %
 % ------
