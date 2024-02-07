@@ -1,12 +1,12 @@
 # Type of simulation (zf, mmse, vblast)
-type: zf
+type: vblast
 
 # Number of tx and rx antennas
 num_Tx: 2
 num_Rx: 2
 
 # Modulation order
-M: 16
+M: 64
         
 # Number of symbols
 num_symb: 15000
